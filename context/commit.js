@@ -8,8 +8,8 @@ module.exports = {
     return {
       ref: process.env.GITHUB_REF,
       sha: process.env.GITHUB_SHA,
-      triggeredBy: context.payload.head_commit && context.payload.head_commit.author
-        ? context.payload.head_commit.author
+      triggeredBy: context.payload.head_commit && context.payload.head_commit.author.name
+        ? context.payload.head_commit.author.name
         : process.env.GITHUB_ACTOR,
       repository: process.env.GITHUB_REPOSITORY,
       message,
