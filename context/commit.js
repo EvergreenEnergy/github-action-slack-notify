@@ -5,13 +5,12 @@ module.exports = {
     const context = github.context;
     const message = context.payload.head_commit ? context.payload.head_commit.message : '';
 
-    console.log(context);
-    console.log(context.payload);
-    
     return {
       ref: process.env.GITHUB_REF,
       sha: process.env.GITHUB_SHA,
-      triggeredBy: process.env.GITHUB_ACTOR,
+      triggeredBy: context.payload.head_commit && context.payload.head_commit.author
+        ? context.payload.head_commit.author
+        : process.env.GITHUB_ACTOR,
       repository: process.env.GITHUB_REPOSITORY,
       message,
     };
