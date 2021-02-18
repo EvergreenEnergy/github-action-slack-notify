@@ -4,6 +4,9 @@ module.exports = {
   getCommitContext: () => {
     const context = github.context;
     const message = context.payload.head_commit ? context.payload.head_commit.message : '';
+
+    console.log(context);
+    console.log(context.payload);
     
     return {
       ref: process.env.GITHUB_REF,
