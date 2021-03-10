@@ -1,7 +1,6 @@
 const fieldMappers = [
   { field: 'ref', context: 'commit' },
   { field: 'sha', context: 'commit', title: 'SHA', valueMapper: (context, field) => context[field] ? context[field].substring(0, 7) : '' },
-  { field: 'triggeredBy', context: 'commit', title: 'Triggered By' },
   ...(process.env.SHOW_ENABLE_ARTIFACT_ID === 'true'
     ? [
       {
@@ -12,8 +11,9 @@ const fieldMappers = [
         short: false,
       },
     ]
-    : [])
-];
+    : []),
+    { field: 'triggeredBy', context: 'commit', title: 'Triggered By' },
+  ];
 
 const defaultValueMapper = (context, field) => context[field];
 
