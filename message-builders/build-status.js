@@ -17,9 +17,10 @@ module.exports = () => {
 
   const { status } = jobContext;
   const statusText = status === 'In Progress' ? 'Started' : `Finished - ${status}`;
+  const jobType = jobContext.type || 'Build';
 
   return {
-    title: `${commitContext.repository} ${jobContext.environment ? jobContext.environment : jobContext.workflow} Build ${statusText}`,
+    title: `${commitContext.repository} ${jobContext.environment ? jobContext.environment : jobContext.workflow} ${jobType} ${statusText}`,
     color: statusColors[status.toLowerCase()],
     text: commitContext.message,
     fields: [

@@ -7,6 +7,7 @@ module.exports = {
 
     return {
       ref: process.env.GITHUB_REF,
+      runNumber: process.env.GITHUB_RUN_NUMBER,
       sha: process.env.GITHUB_SHA,
       triggeredBy: context.payload.head_commit && context.payload.head_commit.author.name
         ? context.payload.head_commit.author.name
